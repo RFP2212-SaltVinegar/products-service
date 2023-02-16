@@ -1,7 +1,7 @@
 DROP DATABASE IF EXISTS products;
 CREATE DATABASE products;
 
-USE products;
+\c products;
 
 CREATE TABLE products {
   id SERIAL PRIMARY KEY,
@@ -41,6 +41,12 @@ CREATE TABLE skus {
   sku_num TEXT,
   quantity INTEGER,
   size TEXT,
+}
+
+CREATE TABLE related {
+  id SERIAL PRIMARY KEY,
+  product_id INTEGER,
+  related_id INTEGER
 }
 
 CREATE TABLE cart {
