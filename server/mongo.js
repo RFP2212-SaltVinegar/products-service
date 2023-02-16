@@ -49,4 +49,9 @@ const SkuSchema = new mongoose.Schema({
   size: String
 });
 
+const CartSchema = new mongoose.Schema({
+  sku_id: TEXT,
+  count: Number
+})
+
 const Product = mongoose.model('Product', ProductSchema);

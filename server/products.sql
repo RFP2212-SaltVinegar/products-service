@@ -38,7 +38,12 @@ CREATE TABLE photos {
 CREATE TABLE skus {
   id SERIAL PRIMARY KEY,
   style_id INTEGER REFERENCES styles(id),
-  sku_num INTEGER,
+  sku_num TEXT,
   quantity INTEGER,
   size TEXT,
+}
+
+CREATE TABLE cart {
+  sku_id TEXT REFERENCES skus(sku_num)
+  count INTEGER
 }
