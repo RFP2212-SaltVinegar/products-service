@@ -48,8 +48,3 @@ CREATE TABLE related {
   product_id INTEGER,
   related_id INTEGER
 }
-
-CREATE TABLE cart {
-  sku_id TEXT REFERENCES skus(sku_num)
-  count INTEGER
-}
