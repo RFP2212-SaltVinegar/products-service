@@ -8,6 +8,4 @@ const client = new Client({
   database: process.env.DATABASE
 });
 
-client.connect();
-
-modules.exports = client;
+module.exports = client;
