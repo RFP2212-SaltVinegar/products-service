@@ -12,40 +12,41 @@ CREATE TABLE products (
   default_price TEXT
 );
 
-COPY products (id, name, slogan, description, category, default_price) FROM '/Users/donnawong/products-service/server/data/products.csv' DELIMITER ',' CSV HEADER;
+COPY products (id, name, slogan, description, category, default_price) FROM '/Users/donnawong/products-service/server/data/products/clean-products.csv' DELIMITER ',' CSV HEADER;
 
 CREATE TABLE features (
   id INTEGER PRIMARY KEY,
-  product_id INTEGER,
+  product_id INTEGER REFERENCES products(id),
   feature TEXT,
   value TEXT
 );
 
-COPY features (id, product_id, feature, value) FROM '/Users/donnawong/products-service/server/data/features.csv' DELIMITER ',' CSV HEADER;
+COPY features (id, product_id, feature, value) FROM '/Users/donnawong/products-service/server/data/features/clean-features.csv' DELIMITER ',' CSV HEADER;
 
 CREATE TABLE styles (
   id INTEGER PRIMARY KEY,
-  product_id INTEGER,
+  product_id INTEGER REFERENCES products(id),
   name TEXT,
   sale_price TEXT,
   original_price TEXT,
   default_style boolean
 );
 
-COPY styles (id, product_id, name, sale_price, original_price, default_style) FROM '/Users/donnawong/products-service/server/data/styles.csv' DELIMITER ',' CSV HEADER;
+COPY styles (id, product_id, name, sale_price, original_price, default_style) FROM '/Users/donnawong/products-service/server/data/styles/clean-styles.csv' DELIMITER ',' CSV HEADER;
 
 CREATE TABLE photos (
   id INTEGER PRIMARY KEY,
-  style_id INTEGER,
+  style_id INTEGER REFERENCES styles(id),
   thumbnail_url TEXT,
   url TEXT
 );
 
-COPY photos (id, style_id, thumbnail_url, url) FROM '/Users/donnawong/products-service/server/data/photos.csv' DELIMITER ',' CSV HEADER;
+-- need to fix max data allocation problem to get clean-photos, but raw-photos is ok for now
+COPY photos (id, style_id, thumbnail_url, url) FROM '/Users/donnawong/products-service/server/data/photos/raw-photos.csv' DELIMITER ',' CSV HEADER;
 
 CREATE TABLE skus (
   id INTEGER PRIMARY KEY,
-  style_id INTEGER,
+  style_id INTEGER REFERENCES styles(id),
   size TEXT,
   quantity INTEGER
 );
@@ -58,7 +59,7 @@ CREATE TABLE related (
   related_id INTEGER
 );
 
-COPY related (id, product_id, related_id) FROM '/Users/donnawong/products-service/server/data/related.csv' DELIMITER ',' CSV HEADER;
+COPY related (id, product_id, related_id) FROM '/Users/donnawong/products-service/server/data/related/clean-related.csv' DELIMITER ',' CSV HEADER;
 
 CREATE TABLE cart (
   id INTEGER PRIMARY KEY,
@@ -67,4 +68,4 @@ CREATE TABLE cart (
   active VARCHAR(2)
 );
 
-COPY cart (id, user_session, product_id, active) FROM '/Users/donnawong/products-service/server/data/cart.csv' DELIMITER ',' CSV HEADER;
+COPY cart (id, user_session, product_id, active) FROM '/Users/donnawong/products-service/server/data/cart/clean-cart.csv' DELIMITER ',' CSV HEADER;
