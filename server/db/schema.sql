@@ -51,7 +51,7 @@ CREATE TABLE skus (
   quantity INTEGER
 );
 
-COPY skus (id, style_id, size, quantity) FROM '/Users/donnawong/products-service/server/data/skus.csv' DELIMITER ',' CSV HEADER;
+COPY skus (id, style_id, size, quantity) FROM '/Users/donnawong/products-service/server/data/skus/clean-skus.csv' DELIMITER ',' CSV HEADER;
 
 CREATE TABLE related (
   id INTEGER PRIMARY KEY,

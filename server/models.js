@@ -1,4 +1,4 @@
-// const client = require('./db/connection.js');
+const client = require('./db/connection.js');
 
 module.exports = {
   // return promises
