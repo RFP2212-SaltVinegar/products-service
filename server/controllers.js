@@ -2,10 +2,11 @@ const models = require('./models.js');
 
 module.exports = {
   getProduct: (req, res) => {
-    models.getProduct(req)
-      .then(({ data }) => {
-        res.status(200);
-        res.end(JSON.stringify(data));
+    models.getProduct(req.params.product_id)
+      .then(({ rows }) => {
+        res
+          .status(200)
+          .json(rows[0]);
       })
       .catch((err) => {
         console.log(err);
@@ -17,7 +18,7 @@ module.exports = {
     models.getProductStyles(req)
       .then(({ data }) => {
         res.status(200);
-        res.end(JSON.stringify(data));
+        res.json(data);
       })
       .catch((err) => {
         console.log(err);
@@ -26,10 +27,11 @@ module.exports = {
   },
 
   getRelatedProducts: (req, res) => {
-    models.getRelatedProducts(req)
-      .then(({ data }) => {
-        res.status(200);
-        res.end(JSON.stringify(data));
+    models.getRelatedProducts(req.params.product_id)
+      .then((data) => {
+        res
+          .status(200)
+          .json(data);
       })
       .catch((err) => {
         console.log(err);

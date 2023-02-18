@@ -4,7 +4,7 @@ require('dotenv').config();
 const client = new Client({
   user: process.env.USER,
   host: process.env.HOST,
-  port: process.env.PORT,
+  port: process.env.PGPORT,
   password: process.env.PASSWORD,
   database: process.env.DATABASE,
 });
