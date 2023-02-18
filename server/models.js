@@ -2,10 +2,6 @@ const client = require('./db/connection.js');
 
 module.exports = {
   // return promises
-  getProducts: (req) => {
-    // return await client.query();
-  },
-
   getProduct: (req) => {
     // return await client.query();
   },
