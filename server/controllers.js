@@ -3,10 +3,10 @@ const models = require('./models.js');
 module.exports = {
   getProduct: (req, res) => {
     models.getProduct(req.params.product_id)
-      .then(({ rows }) => {
+      .then((result) => {
         res
           .status(200)
-          .json(rows[0]);
+          .json(result);
       })
       .catch((err) => {
         console.log(err);

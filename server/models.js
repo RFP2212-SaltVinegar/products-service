@@ -3,15 +3,30 @@ const client = require('./db/connection.js');
 module.exports = {
   // return promises
   getProduct: (id) => {
-    const query = {
-      text: `SELECT *, (
-        SELECT feature FROM features WHERE product_id = $1
-      )
-      FROM products WHERE id = $1`,
+    var result = {};
+
+    const product = {
+      text: `SELECT * FROM products WHERE id=$1`,
       values: [id]
     };
 
-    return client.query(query);
+    const features = {
+      text: `WITH features as (SELECT feature, value FROM features WHERE product_id = $1) SELECT json_agg(features.*) AS features FROM features`,
+      values: [id]
+    }
+
+    client
+      .query(product)
+      .then(({ rows }) => {
+        result = {...rows[0]}
+      })
+
+    return client
+      .query(features)
+      .then(({ rows }) => {
+        result = {...result, ...rows[0]};
+        return result;
+      })
   },
 
   getProductStyles: (req) => {
