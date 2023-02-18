@@ -1,19 +1,20 @@
-// LIBRARY IMPORTS
+// imports
 require('dotenv').config();
-
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const path = require('path');
+const router = require('./routes.js');
 
 const app = express();
 
-// ADD APP-WIDE MIDDLEWARE
+// middleware
 app.use(morgan('dev'));
 app.use(cors());
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname, '../test')));
+app.use('/products', router);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT);
