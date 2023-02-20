@@ -72,20 +72,17 @@ module.exports = {
   },
 
   // for related products
-  getRelatedProducts: (product_id) => {
+  getRelatedProducts: async (product_id) => {
     const query = {
-      text: 'SELECT related_id FROM related WHERE product_id=$1',
+      text: `SELECT json_agg(related_id)
+      AS data
+      FROM related
+      WHERE product_id = $1`,
       values: [product_id]
     };
 
-    return client
+    return await client
       .query(query)
-      .then(({ rows }) => {
-        const related = [];
-        for (var i = 0; i < rows.length; i++) {
-          related.push(rows[i].related_id);
-        }
-        return related;
-      })
+      .then(({ rows }) => rows[0].data);
   }
 }
