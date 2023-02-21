@@ -5,7 +5,6 @@ const morgan = require('morgan');
 const cors = require('cors');
 const path = require('path');
 const router = require('./routes.js');
-// const controllers = require('./controllers.js');
 
 const app = express();
 
@@ -14,7 +13,7 @@ app.use(morgan('dev'));
 app.use(cors());
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, '../test')));
+app.use(express.static(path.join(__dirname, '../client')));
 app.use('/products', router);
 
 const PORT = process.env.PORT || 3000;
