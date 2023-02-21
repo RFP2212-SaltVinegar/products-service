@@ -1,5 +1,7 @@
-# Product Overview API Endpoint
-A complete redesign and optimization of a back end system (comprised of an express server and PostgreSQL database) to meet large quanitities of data and traffic. This section focuses on modernization of the Atelier products API.
+# Products API Service
+A complete redesign and optimization of a back end system (comprised of an express server and PostgreSQL database) to meet large quanitities of data and traffic.
+
+This section focuses on modernization of the Atelier products API.
 
 ## Tech Stack: <br>
 <a href="">![-Node](https://img.shields.io/badge/Node.js-339933.svg?style=for-the-badge&logo=nodedotjs&logoColor=white)</a>
