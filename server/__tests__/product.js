@@ -1,7 +1,7 @@
 require('dotenv').config();
 const { describe, expect, it } = require('@jest/globals');
 const request = require('postman-request');
-const { id, name, slogan, description, category, default_price, features } = require('../example/product.js');
+const { id, name, slogan, description, category, default_price, features } = require('../test-data/product.js');
 
 const url = `http://${process.env.HOST}:${process.env.PORT}/products/${id}`
 

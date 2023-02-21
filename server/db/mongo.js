@@ -50,7 +50,7 @@ const SkuSchema = new mongoose.Schema({
 });
 
 const CartSchema = new mongoose.Schema({
-  sku_id: TEXT,
+  sku_id: String,
   count: Number
 })
 

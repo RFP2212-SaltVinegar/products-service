@@ -1,5 +1,5 @@
 -- checking for the query times for all the endpoints
--- run \i server/queryTimes.sql in psql shell
+-- run \i server/db/query-times.sql in psql shell
 \c products;
 
 -- product endpoint
