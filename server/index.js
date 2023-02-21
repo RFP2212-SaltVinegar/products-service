@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 const path = require('path');
 const router = require('./routes.js');
+// const controllers = require('./controllers.js');
 
 const app = express();
 
@@ -17,5 +18,7 @@ app.use(express.static(path.join(__dirname, '../test')));
 app.use('/products', router);
 
 const PORT = process.env.PORT || 3000;
+const HOST = process.env.HOST || 'localhost';
+
 app.listen(PORT);
-console.log(`Server listening at http://localhost:${PORT}`);
+console.log(`Server listening at http://${HOST}:${PORT}`);

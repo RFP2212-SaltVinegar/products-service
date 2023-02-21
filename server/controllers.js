@@ -1,23 +1,12 @@
 const models = require('./models.js');
 
 module.exports = {
-  getProducts: (req, res) => {
-    models.getProducts(req)
-      .then(({ data }) => {
-        res.status(200);
-        res.end(JSON.stringify(data));
-      })
-      .catach((err) => {
-        console.log(err);
-        res.sendStatus(404);
-      });
-  },
-
   getProduct: (req, res) => {
-    models.getProduct(req)
-      .then(({ data }) => {
-        res.status(200);
-        res.end(JSON.stringify(data));
+    models.getProduct(req.params.product_id)
+      .then((result) => {
+        res
+          .status(200)
+          .json(result);
       })
       .catch((err) => {
         console.log(err);
@@ -26,10 +15,11 @@ module.exports = {
   },
 
   getProductStyles: (req, res) => {
-    models.getProductStyles(req)
-      .then(({ data }) => {
-        res.status(200);
-        res.end(JSON.stringify(data));
+    models.getProductStyles(req.params.product_id)
+      .then((result) => {
+        res
+          .status(200)
+          .json(result);
       })
       .catch((err) => {
         console.log(err);
@@ -38,10 +28,11 @@ module.exports = {
   },
 
   getRelatedProducts: (req, res) => {
-    models.getRelatedProducts(req)
-      .then(({ data }) => {
-        res.status(200);
-        res.end(JSON.stringify(data));
+    models.getRelatedProducts(req.params.product_id)
+      .then((result) => {
+        res
+          .status(200)
+          .json(result);
       })
       .catch((err) => {
         console.log(err);
