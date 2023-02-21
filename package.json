@@ -7,7 +7,7 @@
     "server-dev": "npx nodemon --watch server server/index.js",
     "eslint-dev": "npx eslint .",
     "etl": "node server/ETL/cart.js && node server/ETL/features.js && node server/ETL/products.js && node server/ETL/related.js && node server/ETL/skus.js && node server/ETL/styles.js",
-    "test": "jest"
+    "test": "jest --watch"
   },
   "repository": {
     "type": "git",

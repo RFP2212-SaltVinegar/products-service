@@ -3,16 +3,18 @@ const { describe, expect, it } = require('@jest/globals');
 const request = require('postman-request');
 const { id, name, slogan, description, category, default_price, features } = require('../example/product.js');
 
+const url = `http://${process.env.HOST}:${process.env.PORT}/products/${id}`
+
 describe('Product Information', () => {
   it('should receive a 200 status code', async () => {
-    return await request.get({url: `http://${process.env.HOST}:${process.env.PORT}/products/${id}`}, (err, res) => {
+    return await request.get(url, (err, res) => {
       expect(err).toBeNull;
       expect(res.statusCode).toBe(200);
     });
   });
 
   it('should have all the same product property types', async () => {
-    return await request.get({ url: `http://${process.env.HOST}:${process.env.PORT}/products/${id}` }, (err, res, body) => {
+    return await request.get(url, (err, res, body) => {
       var result = JSON.parse(body);
       expect(typeof result).toBe('object');
 
@@ -28,7 +30,7 @@ describe('Product Information', () => {
   });
 
   it('should receive the correct product information', async () => {
-    return await request.get({ url: `http://${process.env.HOST}:${process.env.PORT}/products/${id}` }, (err, res, body) => {
+    return await request.get(url, (err, res, body) => {
       var result = JSON.parse(body);
       expect(typeof result).toBe('object');
 
