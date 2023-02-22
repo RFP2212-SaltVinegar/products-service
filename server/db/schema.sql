@@ -12,7 +12,7 @@ CREATE TABLE products (
   default_price TEXT
 );
 
--- CREATE INDEX idx_product_id ON products(id);
+CREATE INDEX idx_product_id ON products(id);
 COPY products (id, name, slogan, description, category, default_price) FROM '/Users/donnawong/products-service/server/data/products/clean-products.csv' DELIMITER ',' CSV HEADER;
 
 CREATE TABLE features (
@@ -22,7 +22,7 @@ CREATE TABLE features (
   value TEXT
 );
 
--- CREATE INDEX idx_feature_id ON features(id);
+CREATE INDEX feature_product_id ON features(product_id);
 COPY features (id, product_id, feature, value) FROM '/Users/donnawong/products-service/server/data/features/clean-features.csv' DELIMITER ',' CSV HEADER;
 
 CREATE TABLE styles (
@@ -34,7 +34,7 @@ CREATE TABLE styles (
   default_style boolean
 );
 
--- CREATE INDEX idx_style_id ON styles(id);
+CREATE INDEX style_product_id ON styles(product_id);
 COPY styles (id, product_id, name, sale_price, original_price, default_style) FROM '/Users/donnawong/products-service/server/data/styles/clean-styles.csv' DELIMITER ',' CSV HEADER;
 
 CREATE TABLE photos (
@@ -44,7 +44,7 @@ CREATE TABLE photos (
   url TEXT
 );
 
--- CREATE INDEX idx_photo_id ON photos(id);
+CREATE INDEX photos_style_id ON photos(style_id);
 COPY photos (id, style_id, thumbnail_url, url) FROM '/Users/donnawong/products-service/server/data/photos/clean-photos.csv' DELIMITER ',' CSV HEADER;
 
 CREATE TABLE skus (
@@ -54,7 +54,7 @@ CREATE TABLE skus (
   quantity INTEGER
 );
 
--- CREATE INDEX idx_skus_id ON skus(id);
+CREATE INDEX skus_style_id ON skus(styles_id);
 COPY skus (id, style_id, size, quantity) FROM '/Users/donnawong/products-service/server/data/skus/clean-skus.csv' DELIMITER ',' CSV HEADER;
 
 CREATE TABLE related (
@@ -63,5 +63,5 @@ CREATE TABLE related (
   related_id INTEGER
 );
 
--- CREATE INDEX idx_related_id ON related(id);
+CREATE INDEX related_product_id ON related(product_id);
 COPY related (id, product_id, related_id) FROM '/Users/donnawong/products-service/server/data/related/clean-related.csv' DELIMITER ',' CSV HEADER;
