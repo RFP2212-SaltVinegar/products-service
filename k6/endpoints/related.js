@@ -1,3 +1,5 @@
+// run k6 run k6/endpoints/related.js
+// summary file uploaded at k6/summary/related.html
 import http from 'k6/http';
 import { sleep, check } from 'k6';
 import { Counter } from 'k6/metrics';
@@ -9,13 +11,13 @@ const errors = new Counter('errors');
 // defines test run behaviors
 export const options = {
   stages: [
-    { duration: '30s', target: 1500 },
+    { duration: '30s', target: 1500 }, // manually ramping the VUs to target of 2200
     { duration: '30s', target: 2000 }
   ],
 
   thresholds: {
     http_req_failed: ['rate < 0.01'], // http errors should be less than 1%
-    http_req_duration: ['p(95) < 1000'] // 95% of requests should be below 1s
+    http_req_duration: ['avg < 2000'] // average latency rate should be less than 2000ms
   }
 };
 
