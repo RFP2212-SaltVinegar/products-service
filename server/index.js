@@ -19,5 +19,7 @@ app.use('/products', router);
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'localhost';
 
+app.use(`/${process.env.LOADER_IO}`, (req, res) => res.send(`${process.env.LOADER_IO}`));
+
 app.listen(PORT);
 console.log(`Server listening at http://${HOST}:${PORT}`);
