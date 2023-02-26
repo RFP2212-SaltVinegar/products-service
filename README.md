@@ -25,6 +25,8 @@ This section focuses on modernization of the Atelier products API.
 - Run `npm run etl` to transform data to correct format
 - Execute `psql -f server/db/schema.sql` to populate table
 
+<img src='__media__/schema.png'>
+
 # Testing:
 ## API functionality
 - Run `npm run test` to do Jest testing of all products API endpoints
