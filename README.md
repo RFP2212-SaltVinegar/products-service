@@ -19,14 +19,23 @@ This section focuses on modernization of the Atelier Products API.
   <img src='https://img.shields.io/badge/Amazon%20AWS-232F3E.svg?style=for-the-badge&logo=Amazon-AWS&logoColor=white' />
 </div>
 
-# 📊  Analytics:
+# Analytics:
 ## Products Query Times
+
+Using indices within the PostgreSQL database, the execution times for each API endpoints decreased as follows:
+  - `/products/:product_id` by 99.73% (51.257 ms to <b>0.14 ms</b>)
+  - `/products/:product_id/styles` by 99.99% (6155.382 ms to <b>0.411 ms</b>)
+
+<div>
+  <img src='__media__/products_query_times.png' alt='Products Query Times Graph' width='500'/>
+</div>
+
 - Run `psql -f server/db/query-times.sql` to run psql shell and analzye query times
 
 ## API functionality
 - Run `npm run test` to do Jest testing of all products API endpoints
 
-# ⚡  Getting Started:
+# Getting Started:
 ## Installation
 - Run `npm install` to install initial dependencies
 - Create a local file `.env` using `example.env` as a template.
@@ -42,6 +51,6 @@ This section focuses on modernization of the Atelier Products API.
 - Run `npm run etl` to transform data to correct format
 - Execute `psql -f server/db/schema.sql` to populate table
 
-<div align='center'>
+<div>
   <img src='__media__/schema.png' alt='PostgreSQL Schema' width='300' />
 </div>
