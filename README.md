@@ -22,6 +22,11 @@ This section focuses on modernization of the Atelier Products API.
   <img src='https://img.shields.io/badge/Amazon%20AWS-232F3E.svg?style=for-the-badge&logo=Amazon-AWS&logoColor=white' />
 </div>
 
+# API Endpoints:
+  - <code>/products/:product_id</code>
+  - <code>/products/:product_id/styles</code>
+  - <code>/products/:product_id/related</code>
+
 # Analytics & Testing:
 ## Deployed Stress Testing
 <div>
